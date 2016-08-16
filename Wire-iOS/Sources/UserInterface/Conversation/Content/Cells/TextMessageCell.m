@@ -216,7 +216,7 @@
     [self.messageTextView layoutIfNeeded];
     self.messageTimestampView.timestampLabel.text = [Message formattedReceivedDateLongVersion:self.message];
     self.textViewHeightConstraint.active = attributedMessageText.length == 0;
-    self.editedImageView.hidden = nil == self.message.updatedAt;
+    self.editedImageView.hidden = (nil == self.message.updatedAt);
 
     LinkPreview *linkPreview = textMesssageData.linkPreview;
     
