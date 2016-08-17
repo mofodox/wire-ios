@@ -189,12 +189,6 @@
     self.messageTimestampView.alpha = self.selected ? 1 : 0;
 }
 
-- (void)setContentEditing:(BOOL)contentEditing
-{
-    [super setContentEditing:contentEditing];
-    [self configureForMessage:self.message layoutProperties:self.layoutProperties];
-}
-
 - (void)configureForMessage:(id<ZMConversationMessage>)message layoutProperties:(ConversationCellLayoutProperties *)layoutProperties
 {
     if ( ! [Message isTextMessage:message]) {
@@ -375,7 +369,7 @@
 - (void)edit:(id)sender;
 {
     if([self.delegate respondsToSelector:@selector(conversationCell:didSelectAction:)]) {
-        self.contentEditing = YES;
+        self.beingEdited = YES;
         [self.delegate conversationCell:self didSelectAction:ConversationCellActionEdit];
         // TODO: Add tracking
     }
